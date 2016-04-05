@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Garden</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<nav class="navbar-default">
+    		<div class="collapse navbar-collapse">
+      			<form class="navbar-form navbar-left navbar-rigt">
+    				<%= link_to "", root_path, class: "glyphicon glyphicon-home" %>
+      			</form>
+      			<form class="navbar-form navbar-right">
+      			 <% if user_signed_in? %>
+          			<%= link_to 'Edit account', edit_user_registration_path, class: " btn-outline" %>
+          			<%= link_to 'Log out', destroy_user_session_path, :method => :delete, class: " btn-outline" %>
+        		<% else %>
+          			<%= link_to 'Log in', new_user_session_path, class: " btn-outline" %>
+          			<%= link_to 'Sign up', new_user_registration_path, class: "btn-outline" %>
+        		<% end %>
+      			</form>
+    		</div>
+	</nav>
+<%= yield %>
+
+</body>
+</html>

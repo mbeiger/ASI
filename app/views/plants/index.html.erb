@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">Plants</h1>
+<br>
+<%= link_to 'New', new_plant_path, class: "glyphicon glyphicon-plus" %>
+<br>
+<table class="table table-bordered table-striped text-center">
+  <thead>
+    <tr>
+      <th class="text-center">Spiecie</th>
+      <th class="text-center">Description</th>
+      <th class="text-center">Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plants.each do |plant| %>
+      <tr>
+        <td><%= plant.spiecie %></td>
+        <td><%= plant.description %></td>
+        <td><%= plant.string %></td>
+        <td><%= link_to 'Show', plant, class: "glyphicon glyphicon-eye-open" %> <%= link_to 'Edit', edit_plant_path(plant), class: "glyphicon glyphicon-pencil"  %> <%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-remove"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @posts, class: "text-center" %>
